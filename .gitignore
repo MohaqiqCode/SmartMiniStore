@@ -1,0 +1,77 @@
+# ====================================================================
+# Comprehensive .gitignore for C# / WPF / MongoDB / Visual Studio
+# ====================================================================
+
+# 1. Visual Studio Build Outputs & Tools
+# --------------------------------------------------------------------
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Xx]64/
+[Xx]86/
+[Aa]R[Mm]/
+[Aa]R[Mm]64/
+bbin/
+bin/
+obj/
+/Generated_Code/
+
+# 2. Visual Studio Cache & Personal Settings
+# --------------------------------------------------------------------
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.VC.opendb
+
+# 3. JetBrains Rider & ReSharper (If used)
+# --------------------------------------------------------------------
+_ReSharper.*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+.idea/
+.rider/
+
+# 4. MongoDB & Database Secrets (CRITICAL)
+# --------------------------------------------------------------------
+# Prevent uploading connection strings or credential files
+appsettings.json
+secrets.json
+App.config.local
+*.secret
+*.env
+
+# 5. Local MongoDB Instances Logs & Dumps
+# --------------------------------------------------------------------
+# If you run a local MongoDB instance inside the project folder
+/data/db/
+mongod.log
+*.log
+*.archive
+*.bson
+*.json_dump
+
+# 6. NuGet Packages
+# --------------------------------------------------------------------
+*.nuget.props
+*.nuget.targets
+packages/
+
+# 7. OS Specific Files
+# --------------------------------------------------------------------
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# 8. User Uploads or Output Folders (Optional)
+# --------------------------------------------------------------------
+# If your application saves generated reports or local file assets
+/exports/
+/reports/*.pdf
+/reports/*.xlsx

@@ -1,0 +1,86 @@
+﻿<Window x:Class="SmartMiniStore.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Smart Mini Store"
+        Height="720" Width="1150"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource BackgroundBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="210"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- SIDEBAR -->
+        <Border Grid.Column="0" Background="{StaticResource PrimaryDarkBrush}">
+            <StackPanel>
+                <TextBlock Text="Smart Mini Store"
+                           Foreground="White"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Margin="16,20,16,24"/>
+
+                <Button Content="Dashboard"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="Dashboard"
+                        Style="{StaticResource SidebarButton}"/>
+
+                <Button Content="Products"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="Products"
+                        Style="{StaticResource SidebarButton}"/>
+
+                <Button Content="Categories"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="Categories"
+                        Style="{StaticResource SidebarButton}"/>
+
+                <Button Content="Sales"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="Sales"
+                        Style="{StaticResource SidebarButton}"/>
+
+                <Button Content="Reports"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="Reports"
+                        Style="{StaticResource SidebarButton}"/>
+            </StackPanel>
+        </Border>
+
+        <!-- CONTENT AREA -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0"
+                    Background="White"
+                    BorderBrush="#E5E7EB"
+                    BorderThickness="0,0,0,1"
+                    Padding="20,14">
+                <TextBlock Text="{Binding HeaderText}"
+                           FontSize="16"
+                           FontWeight="SemiBold"
+                           Foreground="{StaticResource TextBrush}"/>
+            </Border>
+
+            <Border Grid.Row="1"
+                    Background="#FEF3C7"
+                    BorderBrush="#F59E0B"
+                    BorderThickness="0,0,0,1"
+                    Padding="16,10"
+                    Visibility="{Binding ConnectionErrorVisibility}"
+                    VerticalAlignment="Top">
+                <TextBlock Text="{Binding ConnectionErrorMessage}"
+                           Foreground="#92400E"
+                           FontWeight="SemiBold"/>
+            </Border>
+
+            <ContentControl Grid.Row="1"
+                            Margin="20"
+                            Content="{Binding CurrentView}"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="SmartMiniStore.Views.CategoriesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="340"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- LEFT: list + search -->
+        <Grid Grid.Column="0" Margin="0,0,16,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Categories" Style="{StaticResource TitleText}"/>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBox Width="280"
+                         Style="{StaticResource BaseTextBox}"
+                         Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                         ToolTip="Search by name"/>
+                <Button Content="New"
+                        Command="{Binding NewCommand}"
+                        Style="{StaticResource BaseButton}"/>
+                <Button Content="Edit"
+                        Command="{Binding EditCommand}"
+                        Style="{StaticResource BaseButton}"/>
+                <Button Content="Delete"
+                        Command="{Binding DeleteCommand}"
+                        Style="{StaticResource DangerButton}"/>
+            </StackPanel>
+
+            <DataGrid Grid.Row="2"
+                      ItemsSource="{Binding Categories}"
+                      SelectedItem="{Binding SelectedCategory}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name"        Binding="{Binding Name}"        Width="*"/>
+                    <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="2*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <!-- RIGHT: form -->
+        <Border Grid.Column="1"
+                Background="{StaticResource CardBrush}"
+                CornerRadius="6"
+                Padding="16">
+            <StackPanel>
+                <TextBlock Text="{Binding FormTitle}"
+                           FontSize="16" FontWeight="SemiBold"
+                           Foreground="{StaticResource TextBrush}"
+                           Margin="0,0,0,12"/>
+
+                <TextBlock Text="Name" Style="{StaticResource LabelText}"/>
+                <TextBox Style="{StaticResource BaseTextBox}"
+                         Text="{Binding FormName, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <TextBlock Text="Description" Style="{StaticResource LabelText}"/>
+                <TextBox Style="{StaticResource BaseTextBox}"
+                         Text="{Binding FormDescription, UpdateSourceTrigger=PropertyChanged}"
+                         Height="80"
+                         AcceptsReturn="True"
+                         TextWrapping="Wrap"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                    <Button Content="Save"
+                            Command="{Binding SaveCommand}"
+                            Style="{StaticResource SuccessButton}"/>
+                    <Button Content="Cancel"
+                            Command="{Binding CancelCommand}"
+                            Style="{StaticResource BaseButton}"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

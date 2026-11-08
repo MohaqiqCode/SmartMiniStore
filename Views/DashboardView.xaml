@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="SmartMiniStore.Views.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+
+            <!-- Top action bar -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
+                <Button Content="Refresh"
+                        Command="{Binding RefreshCommand}"
+                        Style="{StaticResource BaseButton}"/>
+                <Button Content="Load Sample Data"
+                        Command="{Binding LoadSampleDataCommand}"
+                        Style="{StaticResource SuccessButton}"/>
+            </StackPanel>
+
+            <!-- Statistic cards -->
+            <UniformGrid Columns="5" Margin="0,0,0,20">
+                <Border Background="{StaticResource CardBrush}" CornerRadius="6"
+                        Padding="16" Margin="0,0,8,0">
+                    <StackPanel>
+                        <TextBlock Text="Products" Style="{StaticResource LabelText}"/>
+                        <TextBlock Text="{Binding TotalProducts}"
+                                   FontSize="26" FontWeight="Bold"
+                                   Foreground="{StaticResource PrimaryBrush}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="{StaticResource CardBrush}" CornerRadius="6"
+                        Padding="16" Margin="0,0,8,0">
+                    <StackPanel>
+                        <TextBlock Text="Categories" Style="{StaticResource LabelText}"/>
+                        <TextBlock Text="{Binding TotalCategories}"
+                                   FontSize="26" FontWeight="Bold"
+                                   Foreground="{StaticResource PrimaryBrush}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="{StaticResource CardBrush}" CornerRadius="6"
+                        Padding="16" Margin="0,0,8,0">
+                    <StackPanel>
+                        <TextBlock Text="Today's Sales" Style="{StaticResource LabelText}"/>
+                        <TextBlock Text="{Binding TodaySales}"
+                                   FontSize="26" FontWeight="Bold"
+                                   Foreground="{StaticResource PrimaryBrush}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="{StaticResource CardBrush}" CornerRadius="6"
+                        Padding="16" Margin="0,0,8,0">
+                    <StackPanel>
+                        <TextBlock Text="Today's Revenue" Style="{StaticResource LabelText}"/>
+                        <TextBlock Text="{Binding TodayRevenueDisplay}"
+                                   FontSize="20" FontWeight="Bold"
+                                   Foreground="{StaticResource SuccessBrush}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="{StaticResource CardBrush}" CornerRadius="6"
+                        Padding="16">
+                    <StackPanel>
+                        <TextBlock Text="Low Stock" Style="{StaticResource LabelText}"/>
+                        <TextBlock Text="{Binding LowStockCount}"
+                                   FontSize="26" FontWeight="Bold"
+                                   Foreground="{StaticResource DangerBrush}"/>
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
+
+            <!-- Low-stock section -->
+            <Border Background="{StaticResource CardBrush}" CornerRadius="6" Padding="16">
+                <StackPanel>
+                    <TextBlock Text="Low-Stock Products"
+                               FontSize="16" FontWeight="SemiBold"
+                               Foreground="{StaticResource TextBrush}"
+                               Margin="0,0,0,10"/>
+
+                    <DataGrid ItemsSource="{Binding LowStockProducts}"
+                              MaxHeight="320">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name"          Binding="{Binding Name}"          Width="2*"/>
+                            <DataGridTextColumn Header="Category"      Binding="{Binding CategoryName}"  Width="*"/>
+                            <DataGridTextColumn Header="Price (AFN)"   Binding="{Binding Price, StringFormat={}{0:N0}}" Width="*"/>
+                            <DataGridTextColumn Header="Quantity"      Binding="{Binding Quantity}"      Width="*"/>
+                            <DataGridTextColumn Header="Min. Stock"    Binding="{Binding MinimumStock}"  Width="*"/>
+                            <DataGridTextColumn Header="Status"        Binding="{Binding StockStatus}"   Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <TextBlock Text="No low-stock products. Everything is fine."
+                               Foreground="{StaticResource MutedTextBrush}"
+                               Margin="4,8,0,0"
+                               FontStyle="Italic">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding LowStockProducts.Count}" Value="0">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
