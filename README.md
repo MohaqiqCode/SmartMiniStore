@@ -5,8 +5,7 @@ A modern, fast, and secure **Smart Mini-Store Management System** built with **P
 [![NET Version](https://shields.io)](https://microsoft.com)
 [![Database](https://shields.io)](https://mongodb.com)
 [![Architecture](https://shields.io)]()
-[![License](https://shields.io)](LICENSE)
-
+[![License](https://shields.io)](/LICENSE)
 
 ---
 
@@ -74,4 +73,4 @@ The workspace is organized into a highly structured, enterprise-ready MVVM layou
 ---
 
 ## 📄 License
-This store ecosystem project is distributed under the open-source **MIT License**. Review the `LICENSE` file for extended governance conditions.
+This store ecosystem project is distributed under the open-source [MIT License](/LICENSE). Review the [LICENSE](/LICENSE) file for extended governance conditions.
