@@ -7,6 +7,7 @@ A modern, fast, and secure **Smart Mini-Store Management System** built with **P
 [![Architecture](https://shields.io)]()
 [![License](https://shields.io)](LICENSE)
 
+
 ---
 
 ## 📂 Project Architecture
